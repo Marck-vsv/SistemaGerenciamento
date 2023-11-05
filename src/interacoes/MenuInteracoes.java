@@ -2,14 +2,16 @@ package interacoes;
 
 import java.io.IOException;
 import java.util.*;
+
 import sistema.Professor;
+import sistema.Aluno;
 
 public class MenuInteracoes {
     Scanner input = new Scanner(System.in);
 
     public void menuInteracoes() throws IOException {
         System.out.println("------------------------------------");
-        System.out.println("BEM VINDO AO SISTEMA FULANO DA SILVA");
+        System.out.println("= BEM VINDO AO SUE SISTEMA ESCOLAR =");
         System.out.println("------------------------------------\n");
     
         System.out.println("Você possui cadastro?\n");
@@ -25,6 +27,7 @@ public class MenuInteracoes {
                 break;
             case 2:
                 menuCadastrarUsuario();
+                menuSistemaCadastrado();
                 break;
             case 3:
             	System.out.print("FIM DO PROGRAMA");
@@ -38,7 +41,7 @@ public class MenuInteracoes {
     
     public void menuSistemaCadastrado () throws IOException {
         System.out.println("------------------------------------");
-        System.out.println("-- ESCOLHA UMA DAS OPÇÕES A SEGUIR: ");
+        System.out.println("-- ESCOLHA O SEU CAMPO: ");
         System.out.println("------------------------------------\n");
 
         System.out.println("[1] Aluno");
@@ -49,14 +52,16 @@ public class MenuInteracoes {
 
         switch (opcao) {
         case 1:
-        	System.out.print("voce é ALUNO");
-            menuSistemaCadastrado();
+        	System.out.print("Estamos quase lá.\n");
+        	System.out.print("Confirme as informações : \n");
+        	Aluno.cadastrarAluno();
+        	Aluno.AlunoSistema();
             break;
         case 2:
         	System.out.print("Estamos quase lá.\n");
+        	System.out.print("Confirme as informações : \n");
         	Professor.cadastrarProfessor();
         	Professor.professorSistema();
-        
             break;
         case 3:
         	System.out.print("voce é GERENTE");
@@ -73,6 +78,9 @@ public class MenuInteracoes {
 
         System.out.println("Nome:");
         String nome = input.next();
+        
+        System.out.println("Senha:");
+        String senha = input.next();
         
     }
 }
