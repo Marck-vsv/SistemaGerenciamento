@@ -134,7 +134,6 @@ public class Gerente extends Usuario {
         System.out.println("[3] Danilo |  professor   |");
         System.out.println("[4] Mario  |  professor   |");
         System.out.println("[5] Maria  |  professora  |");
-
         System.out.println("----------------------------------------");
         int tchaufunc = input.nextInt();
 
