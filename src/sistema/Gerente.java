@@ -21,7 +21,7 @@ public class Gerente extends Usuario {
             System.out.println("----------------------------------------");
             System.out.println("Digite o código de acesso do gerente:");
             System.out.println("----------------------------------------");
-            
+
             String codigo = scanner.nextLine();
             System.out.println("----------------------------------------");
 
@@ -84,7 +84,6 @@ public class Gerente extends Usuario {
             diminuirSal();
             break;
         }
-
     }
 
     public static void catalogo () {
@@ -98,16 +97,15 @@ public class Gerente extends Usuario {
                 "professor(a)|Mario  |\n" +
                 "professor(a)|Maria  | ");
         System.out.println("----------------------------------------");
-
     }
 
     public static void substituto () {
 
         System.out.println("----------------------------------------");
-        System.out.println("Qual funcionario você quer adicionar? ");
-        System.out.println("[1] Nahtanm|  professor substituto   |");
-        System.out.println("[2] Ramsés |  professor de filosofia |");
-        System.out.println("[3] Lucas  |  professor de sociologia|");
+        System.out.println(" Qual funcionario você quer adicionar? |");
+        System.out.println("[1] Nahtanm |  professor substituto    |");
+        System.out.println("[2] Ramsés  |  professor de filosofia  |");
+        System.out.println("[3] Lucas   |  professor de sociologia |");
         System.out.println("----------------------------------------");
 
         int addfunc = input.nextInt();
@@ -159,7 +157,6 @@ public class Gerente extends Usuario {
 
             System.out.println("Opção inválida.");
         }
-
     }
 
     public static void aumento () {
@@ -194,7 +191,6 @@ public class Gerente extends Usuario {
 
             System.out.println("Opção inválida.");
         }
-
     }
 
     public static void diminuirSal () {
