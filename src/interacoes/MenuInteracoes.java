@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.*;
 
 import sistema.Professor;
+import sistema.Gerente;
 import sistema.Aluno;
 
 public class MenuInteracoes {
@@ -31,7 +32,7 @@ public class MenuInteracoes {
                 break;
             case 3:
             	System.out.print("FIM DO PROGRAMA");
-                System.exit(0);
+                sistemaGerente();
                 break;
             default:
                 System.out.println("Opção inválida");
