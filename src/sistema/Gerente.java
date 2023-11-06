@@ -1,6 +1,5 @@
 package sistema;
 
-import java.util.Random;
 import java.util.Scanner;
 
 public class Gerente extends Funcionario {
