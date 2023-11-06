@@ -41,7 +41,7 @@ public class CadastroUsuario {
     public void cadastroNovoUsuario (int opcao) throws IOException {
         if (opcao == 1) {
             cadastroAluno();
-        } else {
+        } else if (opcao == 2) {
             System.out.println("\n------------------------------------");
             System.out.println("\n--     CADASTRO DE FUNCIONÁRIO    --");
             System.out.println("\n------------------------------------\n");
@@ -49,6 +49,7 @@ public class CadastroUsuario {
             System.out.println("SELECIONE O TIPO DE FUNCIONÁRIO: ");
             System.out.println("[1] Gerente");
             System.out.println("[2] Professor");
+            System.out.println("[3] Outros");
             
             int tipoFuncionario = input.nextInt();
 
@@ -58,6 +59,9 @@ public class CadastroUsuario {
                     break;
                 case 2:
                     cadastroProfessor();
+                    break;
+                case 3:
+                    cadastroOutros();
                     break;
                 default:
                     System.out.println("OPCAO INVALIDA, TENTE NOVAMENTE");
@@ -109,6 +113,24 @@ public class CadastroUsuario {
         String dadosProfessor = matricula + ";" + nome + ";" + senha;
 
         salvarEmArquivo(dadosProfessor, "professor.txt");
+    }
+
+    public void cadastroOutros () throws IOException {
+        System.out.print("| Informe a sua matricula: ");
+        String matricula = input.next();
+
+        System.out.print("| Informe seu nome: ");
+        String nome = reader.readLine();
+
+        System.out.print("| Informe sua senha: ");
+        String senha = input.next();
+
+        System.out.print("| Informe o cargo: ");
+        String cargo = reader.readLine();
+
+        String dadosOutros = matricula + ";" + nome + ";" + senha + ";" + cargo;
+
+        salvarEmArquivo(dadosOutros, "outros.txt");
     }
 
     public void salvarEmArquivo (String dados, String nomeArquivo) {

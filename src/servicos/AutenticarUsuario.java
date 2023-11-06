@@ -63,22 +63,45 @@ public class AutenticarUsuario {
         return true;
     }
 
+    public boolean authOutros () throws IOException {
+        System.out.println("MATRICULA: ");
+        String matricula = input.next();
+
+        System.out.println("SENHA: ");
+        String senha = input.next();
+
+        String retorno = retornaUsuAutenticado("outros.txt", matricula, senha);
+
+        if (retorno.isBlank()) {
+            System.out.println("USUARIO NÃO ENCONTRADO, TENTE NOVAMENTE");
+            authOutros();
+        }
+
+        return true;
+    }
+
     public void authFuncionario () throws IOException {
         System.out.println("SELECIONE O TIPO DE FUNCIONÁRIO: ");
         System.out.println("[1] Gerente");
         System.out.println("[2] Professor");
+        System.out.println("[3] Outros");
 
         int opcao = input.nextInt();
 
         switch (opcao) {
             case 1:
-                if (authGerente() == true) {
+                if (authGerente()) {
                     Gerente.gerenteSistema();
                 }
                 break;
             case 2:
-                if (authProfessor() == true) {
+                if (authProfessor()) {
                     Professor.professorSistema();
+                }
+                break;
+            case 3:
+                if (authOutros()) {
+                    Outros.outrosSistema();
                 }
                 break;
             default:
