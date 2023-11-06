@@ -6,36 +6,27 @@ import java.util.Scanner;
 
 import servicos.CadastroDisciplina;
 
-public class Professor extends Usuario{
+public class Professor extends Funcionario {
     private String nome;
     private String matricula;
+
     ArrayList<String> listaClientes = new ArrayList<String>();
+
     static Scanner sc = new Scanner(System.in);
-    public Professor(String nome, String matricula) {
+
+    public Professor (String nome, String matricula) {
         this.nome = nome;
         this.matricula = matricula;
     }
-    public Professor(){
-    }
-    
-    public static void cadastrarProfessor() throws IOException {
-    	
-        boolean nomeExist= false;
-        System.out.print("| Informe seu nome: ");
-        String nomeProfessor = sc.nextLine();
 
-        System.out.print("| Informe a sua matricula:");
-        String matriculaProfessor = sc.nextLine();
+    public Professor () {
 
-        Professor professor = new Professor(nomeProfessor,matriculaProfessor);
-        
-        System.out.println("\n------------------------------------\n");
-        System.out.print("Olá professor " + professor.nome +"| Matricula : " + professor.matricula);
-        }
-        
+    }   
         
     public static void professorSistema () throws IOException {
+
     	Scanner input = new Scanner(System.in);
+
         System.out.println("\n------------------------------------");
         System.out.println("\n-- ESCOLHA UMA DAS OPÇÕES A SEGUIR: ");
         System.out.println("\n------------------------------------\n");
@@ -47,6 +38,7 @@ public class Professor extends Usuario{
         int opcao = input.nextInt();
 
         switch (opcao) {
+
         case 1:
         	System.out.print("\nAdicionar disciplina\n");
         	CadastroDisciplina.listaDisciplinas();
@@ -70,6 +62,7 @@ public class Professor extends Usuario{
     // Quando o usuario Professor consultar sua carga horaria.
     public static void professorCargaHoraria () throws IOException {
     	Scanner input = new Scanner(System.in);
+        
     	System.out.println("Suas Disciplinas: \n");
     	System.out.println("[1] Matematica");
     	System.out.println("[2] Fisica");

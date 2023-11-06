@@ -4,8 +4,7 @@ import interacoes.*;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        
-        MenuInteracoes menu = new MenuInteracoes();
-        menu.menuInteracoes();
+        MenuSistema menu = new MenuSistema();
+        menu.menuSistema();
     }
 }

@@ -7,35 +7,23 @@ import java.util.Scanner;
 import servicos.CadastroDisciplina;
 
 
-public class Aluno extends Usuario {
-    
-	private static String nome;
-    private static String matricula;
+public class Aluno {
+	private String nome;
+    private String matricula;
+    private String senha;
+
     ArrayList<String> listaClientes = new ArrayList<String>();
+
     static Scanner sc = new Scanner(System.in);
-    public Aluno(String nome, String matricula) {
-        this.nome = nome;
+    
+    public Aluno(String matricula, String nome, String senha) {
         this.matricula = matricula;
+        this.nome = nome;
+        this.senha= senha;
     }
     public Aluno(){
     	
     }
-	
-    public static void cadastrarAluno() throws IOException {
-    	
-        boolean nomeExist= false;
-        System.out.print("| Informe seu nome: ");
-        String nomeAluno = sc.nextLine();
-
-        System.out.print("| Informe a sua matricula:");
-        String matriculaAluno = sc.nextLine();
-
-        Aluno aluno = new Aluno(nomeAluno,matriculaAluno);
-        
-        System.out.println("\n------------------------------------\n");
-        System.out.print("Olá Aluno " + Aluno.nome + "| Matricula : " + Aluno.matricula);
-        }
-
 	
     public static void AlunoSistema () throws IOException {
     	Scanner input = new Scanner(System.in);
@@ -60,12 +48,12 @@ public class Aluno extends Usuario {
         	CadastroDisciplina.listaDisciplinas2();
             break;
         case 3:
-        	System.out.print("Escolha a disciplina : \n");
+        	System.out.print("Escolha a disciplina:\n");
         	CadastroDisciplina.listaDisciplinas3();
             System.exit(0);
             break;
         case 4:
-        	System.out.print("Escolha a disciplina : \n");
+        	System.out.print("Escolha a disciplina:\n");
         	CadastroDisciplina.listaDisciplinas4();
             break;
         case 5:

@@ -1,6 +1,6 @@
 package sistema;
 
-public class Usuario {
+public class Funcionario {
     private String nome;
     private String cargo;
     private String curso;

@@ -3,52 +3,10 @@ package sistema;
 import java.util.Random;
 import java.util.Scanner;
 
-public class Gerente extends Usuario {
+public class Gerente extends Funcionario {
     static Scanner input = new Scanner(System.in);
-    private static final String Modelo1 = "Felipe";
-    private static final String Cod_modelo1 = "1111";
 
-    public static void sistemaGerente() {
-
-        try (Scanner scanner = new Scanner(System.in)) {
-
-            System.out.println("----------------------------");
-            System.out.println("Digite o nome do gerente:");
-            System.out.println("----------------------------");
-
-            String nome = scanner.nextLine();
-
-            System.out.println("----------------------------------------");
-            System.out.println("Digite o código de acesso do gerente:");
-            System.out.println("----------------------------------------");
-
-            String codigo = scanner.nextLine();
-            System.out.println("----------------------------------------");
-
-            if (nome.equals(Modelo1) && codigo.equals(Cod_modelo1)) {
-
-                System.out.println("Gerente autenticado com sucesso!");
-                System.out.println("----------------------------------------");
-            } else {
-
-                System.out.println("Gerente não autenticado!");
-                System.out.println("Digite o nome para cadastrar um gerente:");
-                String novo;
-
-                nome = scanner.nextLine();
-
-                System.out.println("Digite a nova senha do novo gerente:");
-                String senha = scanner.nextLine();
-
-                if (nome.equals(Modelo1) && senha.equals(Cod_modelo1)) {
-
-                    System.out.println("Gerente cadastrado com sucesso!");
-                } else {
-
-                    System.out.println("Erro ao cadastrar gerente!");
-                }
-            }
-        }
+    public static void gerenteSistema() {
 
     System.out.println("----------------------------------------");
     System.out.println("Bem vindo Sr (a) Gerente, o que deseja fazer?");
