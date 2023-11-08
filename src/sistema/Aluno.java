@@ -46,8 +46,7 @@ public class Aluno {
                     calcularMedia();
                     break;
                 case 4:
-                    System.out.println("FIM DO PROGRAMA");
-                    System.exit(0);
+                    
                     break;
                 default:
                     System.out.println("OPCAO INVALIDA");

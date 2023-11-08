@@ -7,9 +7,9 @@ import servicos.*;
 import sistema.*;
 
 public class MenuSistema {
-    Scanner input = new Scanner(System.in);
+    static Scanner input = new Scanner(System.in);
 
-    public void menuSistema () throws IOException {
+    public static void menuSistema () throws IOException {
         System.out.println("------------------------------------");
         System.out.println("= BEM VINDO AO SEU SISTEMA ESCOLAR =");
         System.out.println("------------------------------------\n");
@@ -40,7 +40,7 @@ public class MenuSistema {
         }
     }
 
-    public void acoesSistema () throws IOException {
+    public static void acoesSistema () throws IOException {
         System.out.println("QUEM ESTÁ ENTRANDO NO SISTEMA?");
 
         System.out.println("[1] Aluno");

@@ -6,6 +6,8 @@ import java.nio.file.Path;
 import java.util.List;
 import java.util.Scanner;
 
+import interacoes.*;
+
 public class Gerente extends Funcionario {
     public static final String CAMINHO = "C:\\usuariosSis\\";
 
@@ -37,8 +39,7 @@ public class Gerente extends Funcionario {
                 aumentarOuDiminuirSal();
                 break;
             case 5:
-                System.out.println("FIM DO PROGRAMA");
-                System.exit(0);
+                MenuSistema.menuSistema();
                 break;
             default:
                 System.out.println("OPCAO INVALIDA, TENTE NOVAMENTE");
