@@ -3,6 +3,7 @@ package servicos;
 import java.util.Scanner;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.PrintWriter;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -133,20 +134,21 @@ public class CadastroUsuario {
         salvarEmArquivo(dadosOutros, "outros.txt");
     }
 
-    public void salvarEmArquivo (String dados, String nomeArquivo) {
+    public void salvarEmArquivo(String dados, String nomeArquivo) {
         try {
-            // Abre o arquivo em modo de escrita
+            if (nomeArquivo.equals("professor.txt") || nomeArquivo.equals("gerente.txt") || nomeArquivo.equals("outros.txt")) {
+                dados += ";3000";
+            }
+
             FileWriter fileWriter = new FileWriter(CAMINHO + nomeArquivo, true);
-
-            // Cria o BufferedWriter para escrever no arquivo
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+            PrintWriter printWriter = new PrintWriter(bufferedWriter);
 
-            // Escreve os valores no arquivo
-            bufferedWriter.newLine();
-            bufferedWriter.write(dados);
+            printWriter.println(dados);
 
-            // Fecha o BufferedWriter
+            printWriter.close();
             bufferedWriter.close();
+            fileWriter.close();
 
             System.out.println("Valores escritos no arquivo com sucesso!");
         } catch (IOException e) {

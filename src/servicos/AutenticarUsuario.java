@@ -76,7 +76,6 @@ public class AutenticarUsuario {
             System.out.println("USUARIO NÃO ENCONTRADO, TENTE NOVAMENTE");
             authOutros();
         }
-
         return true;
     }
 
@@ -101,7 +100,23 @@ public class AutenticarUsuario {
                 break;
             case 3:
                 if (authOutros()) {
-                    Outros.outrosSistema();
+                    try {
+                        FileReader fileReader = new FileReader(CAMINHO + "outros.txt");
+                        BufferedReader bufferedReader = new BufferedReader(fileReader);
+                        
+                        String linha;
+                        while ((linha = bufferedReader.readLine()) != null) {
+                            String[] colunas = linha.split(";");
+            
+                            String colNome = colunas[1];
+                            String colCargo = colunas[3];
+
+                            System.out.println("Nome: " + colNome + " | Cargo: " + colCargo);
+                        }
+                        bufferedReader.close();
+                    } catch (IOException e) {
+                        System.out.println("Erro ao ler o arquivo: " + e.getMessage());
+                    }
                 }
                 break;
             default:
@@ -112,24 +127,20 @@ public class AutenticarUsuario {
 
     public String retornaUsuAutenticado (String nomeDoArquivo, String matricula, String senha) {
         try {
-            // Abre o arquivo em modo de leitura
             FileReader fileReader = new FileReader(CAMINHO + nomeDoArquivo);
             BufferedReader bufferedReader = new BufferedReader(fileReader);
             
             String linha;
 
             while ((linha = bufferedReader.readLine()) != null) {
-                // Divide a linha em colunas usando o separador desejado (por exemplo, ponto e vírgula)
                 String[] colunas = linha.split(";");
 
-                // Verifica se dois valores são iguais à entrada procurada
                 if (colunas.length >= 2 && colunas[0].equals(matricula) && colunas[2].equals(senha)) {
                     bufferedReader.close();
                     return linha;
                 }
             }
             
-            // Fecha o BufferedReader
             bufferedReader.close();
         } catch (IOException e) {
             System.out.println("Erro ao ler o arquivo: " + e.getMessage());

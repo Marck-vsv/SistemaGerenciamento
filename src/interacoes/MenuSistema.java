@@ -53,7 +53,7 @@ public class MenuSistema {
             case 1:
                 AutenticarUsuario authAlu = new AutenticarUsuario();
                 if (authAlu.authAluno() == true) {
-                    Aluno.AlunoSistema();
+                    Aluno.alunoSistema();
                 }
                 break;
             case 2:

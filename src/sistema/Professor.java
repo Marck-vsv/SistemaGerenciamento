@@ -4,8 +4,6 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import servicos.CadastroDisciplina;
-
 public class Professor extends Funcionario {
     private String nome;
     private String matricula;
@@ -40,11 +38,11 @@ public class Professor extends Funcionario {
 
             case 1:
             	System.out.print("\nAdicionar disciplina\n");
-            	CadastroDisciplina.listaDisciplinas();
+            	// CadastroDisciplina.listaDisciplinas();
                 break;
             case 2:
             	System.out.print("Remover Disciplina:\n");
-            	CadastroDisciplina.listaDisciplinas2();
+            	// CadastroDisciplina.listaDisciplinas2();
                 break;
             case 3:
             	System.out.print("Ver carga horaria\n");
