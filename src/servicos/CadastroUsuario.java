@@ -8,6 +8,8 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 
+import interacoes.*;
+
 public class CadastroUsuario {
     Scanner input = new Scanner(System.in);
 
@@ -44,7 +46,7 @@ public class CadastroUsuario {
             cadastroAluno();
         } else if (opcao == 2) {
             System.out.println("\n------------------------------------");
-            System.out.println("\n--     CADASTRO DE FUNCIONÁRIO    --");
+            System.out.println("\n       CADASTRO DE FUNCIONÁRIO      ");
             System.out.println("\n------------------------------------\n");
 
             System.out.println("SELECIONE O TIPO DE FUNCIONÁRIO: ");
@@ -57,12 +59,15 @@ public class CadastroUsuario {
             switch (tipoFuncionario) {
                 case 1:
                     cadastroGerente();
+                    MenuSistema.menuSistema();
                     break;
                 case 2:
                     cadastroProfessor();
+                    MenuSistema.menuSistema();
                     break;
                 case 3:
                     cadastroOutros();
+                    MenuSistema.menuSistema();
                     break;
                 default:
                     System.out.println("OPCAO INVALIDA, TENTE NOVAMENTE");
@@ -84,6 +89,7 @@ public class CadastroUsuario {
         String dadosAluno = matricula + ";" + nome + ";" + senha;
 
         salvarEmArquivo(dadosAluno, "aluno.txt");
+        MenuSistema.menuSistema();
     }
 
     public void cadastroGerente () throws IOException {
@@ -144,7 +150,10 @@ public class CadastroUsuario {
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
             PrintWriter printWriter = new PrintWriter(bufferedWriter);
 
-            printWriter.println(dados);
+            printWriter.append("\n");
+            printWriter.append(dados);
+
+            // printWriter.println(dados);
 
             printWriter.close();
             bufferedWriter.close();

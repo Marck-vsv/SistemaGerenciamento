@@ -4,6 +4,8 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import interacoes.MenuSistema;
+
 public class Professor extends Funcionario {
     private String nome;
     private String matricula;
@@ -29,27 +31,22 @@ public class Professor extends Funcionario {
             System.out.println("\n------------------------------------\n");
 
             System.out.println("[1] Adicionar Disciplina");
-            System.out.println("[2] Remover Disciplina");
-            System.out.println("[3] Ver Carga Horaria");
-            System.out.println("[4] Sair");
+            System.out.println("[2] Ver Carga Horaria");
+            System.out.println("[3] Voltar");
             int opcao = input.nextInt();
 
             switch (opcao) {
 
             case 1:
             	System.out.print("\nAdicionar disciplina\n");
-            	// CadastroDisciplina.listaDisciplinas();
+                cadastrarDisciplina();
                 break;
             case 2:
-            	System.out.print("Remover Disciplina:\n");
-            	// CadastroDisciplina.listaDisciplinas2();
-                break;
-            case 3:
             	System.out.print("Ver carga horaria\n");
             	Professor.professorCargaHoraria();
                 break;
-            case 4:
-            	System.out.print("Fim do programa,volte sempre!\n");
+            case 3:
+                MenuSistema.menuSistema();
                 break;
             default:
                 System.out.println("Opção inválida");
@@ -61,40 +58,43 @@ public class Professor extends Funcionario {
     public static void professorCargaHoraria () throws IOException {
     	try (Scanner input = new Scanner(System.in)) {
             System.out.println("Suas Disciplinas: \n");
-            System.out.println("[1] Matematica");
-            System.out.println("[2] Fisica");
-            System.out.println("[3] Todas");
+            System.out.println("[1] Todas");
             
             int opcao = input.nextInt();
             switch (opcao) {
             case 1:
-            	System.out.print("\nMatematica| carga horaria: 40| SALA 01|MANHA ");
-            	System.out.print("\nMatematica| carga horaria: 40| SALA 03|MANHA ");
-            	System.out.print("\nMatematica| carga horaria: 40| SALA 04|MANHA ");
-            	System.out.println("\nTotal :120 Horas");
-            	System.out.print("Fim do programa,volte sempre!");
-                break;
-            case 2:
-            	System.out.print("\nFisica    | carga horaria: 40| SALA 03|NOITE ");
-            	System.out.print("\nFisica    | carga horaria: 40| SALA 05|NOITE ");
-            	System.out.print("\nTotal :80 Horas ");
-            	System.out.print("Fim do programa,volte sempre!");
-                break;
-            case 3:
-            	System.out.print("\nMatematica| carga horaria: 40| SALA 01|MANHA ");
-            	System.out.print("\nMatematica| carga horaria: 40| SALA 03|MANHA ");
-            	System.out.print("\nMatematica| carga horaria: 40| SALA 04|MANHA ");
-            	System.out.print("\nFisica    | carga horaria: 40| SALA 03|NOITE ");
-            	System.out.print("\nFisica    | carga horaria: 40| SALA 05|NOITE ");
-                System.out.println("\nTotal : 200 Horas");
-                System.out.print("Fim do programa,volte sempre!");
+                Disciplina.lerArquivoDisciplinas();
                 break;
             default:
                 System.out.println("Opção inválida");
             }
         }
     	
-        }
+    }
+
+    public static void cadastrarDisciplina () throws IOException {
+        System.out.print("Nome da disciplina: ");
+        String nome = sc.nextLine();
+
+        System.out.print("Carga Horaria: ");
+        String cargaHoraria = sc.nextLine();
+
+        System.out.println("ID da disciplina: ");
+        String id = sc.nextLine();
+
+        System.out.println("Quantia max de alunos: ");
+        String maxAlunos = sc.nextLine();
+
+        FileWriter fileWriter = new FileWriter("C:\\usuariosSis\\disciplina.txt", true);
+        BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+
+        String linha = nome + ";" + cargaHoraria + ";" + id + ";" + maxAlunos;
+        bufferedWriter.write(linha);
+        bufferedWriter.newLine();
+        bufferedWriter.close();
+
+        System.out.println("Informações gravadas com sucesso!");
+    }
     
 	public String getNome() {
 		return nome;

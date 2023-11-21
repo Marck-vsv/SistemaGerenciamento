@@ -1,5 +1,7 @@
 package sistema;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -20,7 +22,7 @@ public class Gerente extends Funcionario {
         System.out.println("[2] Contratar Funcionário");
         System.out.println("[3] Demitir Funcionário");
         System.out.println("[4] Aumentar ou Diminuir Salário");
-        System.out.println("[5] Sair");
+        System.out.println("[5] Voltar");
         System.out.println("---------------------------------------------");
 
         int opcao = input.nextInt();
@@ -87,14 +89,171 @@ public class Gerente extends Funcionario {
     }
 
     public static void contratarFuncionario() throws IOException {
+        System.out.println("Selecione o tipo de funcionario que gostaria de contratar: ");
+        System.out.println("[1] Professor");
+        System.out.println("[2] Demais funcionarios");
 
+        int opcao = input.nextInt();
+        input.nextLine();
+
+        switch (opcao) {
+            case 1:
+                contratarProf();
+                gerenteSistema();
+                break;
+            case 2:
+                contratarOutros();
+                gerenteSistema();
+                break;
+            default:
+                System.out.println("OPCAO INVALIDA, TENTE NOVAMENTE");
+                contratarFuncionario();
+        }
+    }
+
+    public static void contratarProf() throws IOException {
+        System.out.println("Qual a matricula do professor alvo? ");
+        String matricula = input.nextLine();
+
+        System.out.println("Qual o nome do professor alvo? ");
+        String nome = input.nextLine();
+
+        System.out.println("Você contratou o professor " + nome + " com a matricula " + matricula);
+    }
+
+    public static void contratarOutros() throws IOException {
+        System.out.println("Qual a matricula do funcionario alvo? ");
+        String matricula = input.nextLine();
+
+        System.out.println("Qual o nome do funcionario alvo? ");
+        String nome = input.nextLine();
+
+        System.out.println("Você contratou o funcionario " + nome + " com a matricula " + matricula);
     }
 
     public static void demitirFuncionario() throws IOException {
+        System.out.println("Selecione o tipo de funcionario que gostaria de demitir: ");
+        System.out.println("[1] Professor");
+        System.out.println("[2] Demais funcionarios");
 
+        int opcao = input.nextInt();
+
+        switch (opcao) {
+            case 1:
+                demitirProf();
+                gerenteSistema();
+                break;
+            case 2:
+                demitirOutros();
+                gerenteSistema();
+                break;
+            default:
+                System.out.println("OPCAO INVALIDA, TENTE NOVAMENTE");
+                demitirFuncionario();
+        }
+    }
+
+    public static void demitirProf() throws IOException {
+        System.out.println("Qual a matricula do professor alvo? ");
+        String matricula = input.nextLine();
+
+        System.out.println("Qual o nome do professor alvo? ");
+        String nome = input.nextLine();
+
+        System.out.println("Você demitiu o professor " + nome + " com a matricula " + matricula);
+    }
+
+    public static void demitirOutros() throws IOException {
+        System.out.println("Qual a matricula do funcionario alvo? ");
+        String matricula = input.nextLine();
+
+        System.out.println("Qual o nome do funcionario alvo? ");
+        String nome = input.nextLine();
+
+        System.out.println("Você demitiu o funcionario " + nome + " com a matricula " + matricula);
     }
 
     public static void aumentarOuDiminuirSal() throws IOException {
+        System.out.println("Selecione o tipo de funcionario que gostaria de modificar: ");
+        System.out.println("[1] Professor");
+        System.out.println("[2] Demais funcionarios");
 
+        int opcao = input.nextInt();
+        input.nextLine();
+
+        switch (opcao) {
+            case 1:
+                salarioProf();
+                break;
+            case 2:
+                salarioOutros();
+                gerenteSistema();
+                break;
+            default:
+                System.out.println("OPCAO INVALIDA, TENTE NOVAMENTE");
+                aumentarOuDiminuirSal();
+        }
+    }
+
+    public static void salarioProf() throws IOException {
+        System.out.println("Qual a matricula do professor alvo? ");
+        String matricula = input.nextLine();
+
+        BufferedReader reader = Files.newBufferedReader(Path.of(CAMINHO + "professor.txt"));
+
+        BufferedWriter writer = Files.newBufferedWriter(Path.of(CAMINHO + "professor.txt"));
+
+        String linha;
+        while ((linha = reader.readLine()) != null) {
+            String[] colunas = linha.split(";");
+            if (colunas[0].equals(matricula)) {
+                System.out.println("Qual o novo salario? ");
+                String novoSalario = input.nextLine();
+
+                linha = linha.replace(";" + colunas[3], ";" + String.valueOf(novoSalario));
+            } else {
+                System.out.println("Matricula inexistente");
+                salarioProf();
+            }
+
+            writer.write(linha + "\n");
+        }
+
+        reader.close();
+        writer.close();
+
+        System.out.println("Salário atualizado com sucesso");
+        gerenteSistema();
+    }
+
+    public static void salarioOutros() throws IOException {
+        System.out.println("Qual a matricula do funcionario alvo? ");
+        String matricula = input.nextLine();
+
+        BufferedReader reader = Files.newBufferedReader(Path.of(CAMINHO + "outros.txt"));
+
+        BufferedWriter writer = Files.newBufferedWriter(Path.of(CAMINHO + "outros.txt"));
+
+        String linha;
+        while ((linha = reader.readLine()) != null) {
+            String[] colunas = linha.split(";");
+            if (colunas[0].equals(matricula)) {
+                System.out.println("Qual o novo salario? ");
+                String novoSalario = input.nextLine();
+                
+                linha = linha.replace(";" + colunas[3], ";" + String.valueOf(novoSalario));
+            } else {
+                System.out.println("Matricula inexistente");
+                salarioOutros();
+            }
+
+            writer.write(linha + "\n");
+        }
+
+        reader.close();
+        writer.close();
+
+        System.out.println("Salário atualizado com sucesso");
+        gerenteSistema();
     }
 }

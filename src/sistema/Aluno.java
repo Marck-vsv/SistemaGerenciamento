@@ -2,6 +2,9 @@ package sistema;
 
 import java.io.*;
 import java.util.Scanner;
+
+import interacoes.MenuSistema;
+
 import java.util.Random;
 import java.util.ArrayList;
 
@@ -30,7 +33,7 @@ public class Aluno {
             System.out.println("[1] Ver Disciplinas");
             System.out.println("[2] Fazer Avaliaçao");
             System.out.println("[3] Calcular Media");
-            System.out.println("[4] Sair ");
+            System.out.println("[4] Voltar ");
 
             int opcao = input.nextInt();
 
@@ -46,7 +49,7 @@ public class Aluno {
                     calcularMedia();
                     break;
                 case 4:
-                    
+                    MenuSistema.menuSistema();
                     break;
                 default:
                     System.out.println("OPCAO INVALIDA");
@@ -69,7 +72,9 @@ public class Aluno {
 
         double media = soma / notaAlunos.size();
 
-        System.out.println("Média: " + media);
+        String notaFormatada = String.format("%.2f", media);
+
+        System.out.println("Média: " + notaFormatada);
         alunoSistema();
     }
 

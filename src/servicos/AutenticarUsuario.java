@@ -5,6 +5,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Scanner;
 
+import interacoes.MenuSistema;
 import sistema.*;
 
 public class AutenticarUsuario {
@@ -118,6 +119,8 @@ public class AutenticarUsuario {
                         System.out.println("Erro ao ler o arquivo: " + e.getMessage());
                     }
                 }
+
+                MenuSistema.menuSistema();
                 break;
             default:
                 System.out.println("OPCAO INVALIDA, TENTE NOVAMENTE");
