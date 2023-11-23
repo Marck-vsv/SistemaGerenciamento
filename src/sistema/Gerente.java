@@ -155,10 +155,10 @@ public class Gerente extends Funcionario {
 
     public static void demitirProf() throws IOException {
         System.out.println("Qual a matricula do professor alvo? ");
-        String matricula = input.nextLine();
+        String matricula = input.next();
 
         System.out.println("Qual o nome do professor alvo? ");
-        String nome = input.nextLine();
+        String nome = input.next();
 
         System.out.println("Você demitiu o professor " + nome + " com a matricula " + matricula);
     }
@@ -222,7 +222,7 @@ public class Gerente extends Funcionario {
         reader.close();
         writer.close();
 
-        System.out.println("Salário atualizado com sucesso");
+        System.out.println("Salário de João atualizado em 15% com sucesso");
         gerenteSistema();
     }
 
